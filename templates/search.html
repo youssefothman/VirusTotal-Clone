@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Download</title>
+  </head>
+<body>
+
+
+<div class="tab-content" id="myTabContent" style="page-break-after: always">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <br>
+  <br>
+  <center>
+    <div style = "font-size:32px" >
+      This file is
+      <font color = {{ color }}>{{ mal }}.</font>
+    </div>
+    <br>
+    <div style="background-color:#000000; height:12px; width:60%;">
+      <br>
+      <br>
+      {{ hash[7] }} out of {{ hash[6] }} security vendors flagged this file to be malicious. <br/>
+      <br>
+      <br>
+      <div style="background-color:#dedee3; width:90%; padding: 20px; font-size:20px" >
+        {{ sentence }}
+      </div>
+      <br>
+    </div>
+  </center>
+  </div>
+</div>
+
+
+
+<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="page-break-after: always">
+    <center>
+    <div style = "font-size:32px" >
+      {{ hash[7] }} out of {{ hash[6] }} flagged <br/>
+    </div>
+    <br>
+    <div style="background-color:#000000; height:12px; width:60%;">
+      <br>
+      <br>
+      <div style="background-color:#f6d8dd; width:90%; padding: 20px; font-size:20px" >
+          <div style = "font-size:32px" >
+            Suspicious or Malicious
+          </div>
+          <br>
+        {% for index in range(0,hash[7],3) %}
+            <div style = "float:left; width:33.33%;padding:10x;">
+              {{ who[index] }} <br>
+            </div>
+            <div style = "float:left; width:33.33%;padding:10x;">
+              {{ who[index+1] }} <br>
+            </div>
+            <div style = "float:left; width:33.33%;padding:10x;">
+              {{ who[index+2] }}<br>
+            </div>
+        {% endfor %}
+          <div style = "clear:both;display:table"></div>
+      </div>
+      <br>
+      <div style="background-color:#dcf2db; width:90%; padding: 20px; font-size:20px" >
+          <div style = "font-size:32px" >
+            Not Suspicious or Malicious
+          </div>
+          <br>
+        {% for index in range(0,not_flagged,3) %}
+            <div style = "float:left; width:33.33%;padding:10x;">
+              {{ vend[index] }} <br>
+            </div>
+
+            <div style = "float:left; width:33.33%;padding:10x;">
+              {{ vend[index+1] }} <br>
+            </div>
+
+            <div style = "float:left; width:33.33%;padding:10x;">
+              {{ vend[index+2] }} <br>
+            </div>
+
+        {% endfor %}
+          <div style = "clear:both;display:table"></div>
+      </div>
+      <br>
+    </div>
+
+  </center>
+<br></div>
+
+
+
+
+<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br/>
+  <center>
+    <div style = "font-size:32px" >
+      MD5 Hash: {{hash[0]}} <br/>
+    </div>
+
+    <br>
+    <div style="background-color:#000000; height:12px; width:60%;">
+    </div>
+  </center>
+      <br>
+      <br>
+      <div style="width:90%; padding: 10px; font-size:20px" >
+        <div style = "text-align:left">
+          <div style = "font-size:32px" >
+            Properties
+          </div>
+          <br>
+          <span>
+            <ul style="list-style-type: none; display: inline-block; zoom:1; *display: inline; _height: 10px; font-size:20px;">
+              <li>MD5: {{hash[0]}} </li>
+              <li>SHA256: {{hash[1]}}</li>
+              <li>Size (Bytes): {{hash[3]}}</li>
+              <li>File Type: {{hash[2]}}</li>
+            </ul>
+
+          </span>
+        </div>
+      </div>
+      <br>
+      <div style="width:90%; padding: 10px; font-size:20px" >
+        <div style = "text-align:left">
+          <div style = "font-size:32px" >
+            Common File Names
+          </div>
+          <br>
+          <span>
+            <ul style="list-style-type: none; display: inline-block; zoom:1; *display: inline; _height: 10px;">
+              {% for name in names %}
+              <li>{{ name }}</li>
+              {% endfor %}
+            </ul>
+          </span>
+        </div>
+      </div>
+      <br>
+    </div>
+
+</div>
+
+</body>
+</html>

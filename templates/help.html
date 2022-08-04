@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div>
+    <br>
+    <h2 class="text-center">Help Page</h2>
+    <br>
+    <h4 style="margin-left: 70px">What is a Hash?</h4>
+    <div class="tab-content">
+    <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
+    <center>
+    <div style="background-color:#dedee3; width:90%; padding: 20px; font-size:20px" >
+    <div style = "font-size:24px" >
+      <p>A hash is a function that converts data to a different format or representation called a hash. Hashing is important because it can be used to organize and store data efficiently. One of the most common uses for  hashing is to classify a file as malicious. Two common formats for hashes are MD5 and SHA256. An MD5 Hash is a 128 bit hash that is widely used though it has some vulnerability issues. SHA256 hashes are much stronger than MD5 hashes.</p>
+    </div>
+    </div>
+    <br>
+    </center>
+    </div>
+    </div>
+    <br>
+    
+    <h4 style="margin-left: 70px">What does VirusProtect do?</h4>
+    <div class="tab-content">
+    <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
+    <center>
+    <div style="background-color:#dedee3; width:90%; padding: 20px; font-size:20px" >
+    <div style = "font-size:24px" >
+      <p>As the information becomes increasingly accessible and exchanged between more people, the threat of malicious files and data has become a serious concern. VirusProtect accepts hashes from the user and searches our database as well as over 70 antivirus scanners and URL/domain blocklisting services provided by VirusTotal. We then return a detailed summary of information concerning the hash including whether the hash is malicious or not.</p>
+    </div>
+    </div>
+    <br>
+    </center>
+    </div>
+    </div>
+    <br>
+
+    <h4 style="margin-left: 70px">How to use VirusProtect?</h4>
+    <div class="tab-content">
+    <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
+    <center>
+    <div style="background-color:#dedee3; width:90%; padding: 20px; font-size:20px" >
+    <div style = "font-size:24px" >
+      <p>Users can submit their hashes via MD5 or SHA256. Once inputed, simply hit search, and VirusProtect will search our own and VirusTotal's database for metadata concerning the hash. Along with viewing the summary of the metadata in your browser, you can also generate a downloadable pdf containing all the information. VirusProtect also offers a history of all hashes searched in a user's session if they are not signed up for VirusProtect. For our members, we offer a complete history of all hashes searched through our dropdown.</p>
+    </div>
+    </div>
+    <br>
+    </center>
+    </div>
+    </div>
+    <br>
+
+    <h4 style="margin-left: 70px">What do the results mean?</h4>
+    <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <center>
+    <div style="background-color:#dedee3; width:90%; padding: 20px; font-size:20px" >
+    <div style = "font-size:24px" >
+      <font color = "#2b8f22">Safe: This file has not been flagged by many vendors therefore we don't think you should be worried about it.</font><br/><br/>
+      <font color = "#c1bb49">Suspicious: Approximately 20% of the vendors that have seen this hash have flagged it as malicious. Since that is not a very high proportion we don't think that file is too dangerous, additional research may be necessary to reach a better result.</font><br/><br/>
+      <font color = "#b70d29">Malicious: At least a third of the vendors that have seen this hash have flagged it as malicious, in our experience that is a sufficient enough amount to mark the hash as malicious. You should definitely NOT trust this file nor the website it originated from.</font><br/>
+    </div>
+    </div>
+    <br>
+    </center>
+    </div>
+    </div>
+{% endblock %}

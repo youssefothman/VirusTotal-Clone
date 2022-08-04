@@ -1,0 +1,12 @@
+.nav-item .nav-link:hover {
+            background-color: #E4F2FCFF;
+            color:rgb(0, 0, 0);
+        }
+ .nav-item .nav-link.active {
+     background-color: #e4f2fc;
+     color:black;
+ }
+
+ .nav-item {
+     color: black;
+ }

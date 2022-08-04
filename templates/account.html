@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div>
+    <br/><br/>
+  <h4 class="text-center">Welcome, {{ info[1] }} {{ info[2] }}</h4>
+    <br/><br/>
+     <div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <center>
+      <div style="background-color:#dedee3; width:70%; padding: 20px; font-size:20px" >
+        <div style = "font-size:24px;text-align:left" >
+        <center><h5>Account Information:</h5></center>
+        <br>
+      <h5>Username: {{ info[4] }}</h5>
+        <h5>Password: * <span style="float:right;"><a type="submit" class="btn btn-outline-danger" href="{{ url_for('password') }}">Change Password</a>&emsp;</span></h5>
+          <h5>Email: {{ info[3] }}
+              {% if email == 0 %}
+              <span style="float:right;"><a type="submit" class="btn btn-outline-success" href="{{ url_for('email') }}">Add Email</a>&emsp;</span>
+          {% endif %}
+          </h5>
+    </div>
+      </div>
+      <br>
+  </center>
+</div>
+  </div>
+        <br/><br/>
+  <h4 class="text-center">History</h4>
+    <br/><br/>
+     <div class="tab-content" id="myTabContent2">
+  <div class="tab-pane fade show active" id="home2" role="tabpanel" aria-labelledby="home-tab">
+  <center>
+      <div style="background-color:#dedee3; width:70%; padding: 20px; font-size:20px" >
+        <div style = "font-size:24px" >
+          {% for hash in history %}
+      <h5>{{ hash }}</h5>
+          {% endfor %}
+    </div>
+      </div>
+      <br>
+  </center>
+  </div>
+     </div>
+  </div>
+{% endblock %}

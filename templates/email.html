@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/email" METHOD="POST" autocomplete="off">
+  <div class="text-center" style="margin: 15%">
+    {% if result != 0 %}
+    <br/><br/>
+    <h6 style="color: #ff251e">{{ result }}</h6>
+    {% endif %}
+    <br/>
+    <h4>Add Email</h4>
+    <h6>Enter email:</h6><input type="text" placeholder="Email" name="email"><br/><br/>
+    <input type="submit" value="Add Email" class="btn btn-outline-success">
+  </div>
+</form>
+{% endblock %}

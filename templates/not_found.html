@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="margin: 15%;">
+  <div>
+    <br>
+    <h2 class="text-center">Search Results</h2>
+  </div>
+<h4 class="text-center">Nothing matches that hash, neither in our local database nor on VirusTotal. Please try again</h4>
+<br>
+<div>
+    <p class="text-center">
+        Enter a file hash in MD5 or SHA256 format to be scanned.<br/>
+    </p>
+  <form action="/search" METHOD="POST">
+      <p class="text-center">
+      <input type="text" placeholder="Hash" name="searched" size="50">
+      <input type="submit" value="Search" class="btn btn-outline-primary">
+      </p>
+    </form>
+</div>
+</div>
+{% endblock %}

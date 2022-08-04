@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sign_up.css') }}">
+<div style="background-color:#e3e3e3">
+  <div>
+    <br>
+    <h2 class="text-center">Log In or Create an Account</h2>
+    <p class="text-center" style="color: #ff251e">Fields denoted with an asterisk (*) are required</p>
+  </div>
+  <center>
+  <div style="background-color:#000000; height:12px; width:60%;"> 
+  </div>
+  </center>
+  <br><br>
+{% if error != 0 %}
+<h5 class="text-center" style="margin-left: 20px"><a style="color: #ff251e">{{ error }}</a></h5>
+<br/><br/>
+{% endif %}
+<center>
+<div style="background-color:#ffffff; width:33%">
+<div style = "text-align:left">
+<br>
+<h5 style="margin-left: 20px">Log In:</h5>
+<div style="background-color:#000000; height:4px; width:50%;"> </div>
+<br>
+<form action="/login" METHOD="POST" autocomplete="off">
+<h6>Username:</h6><br/>
+  <input type="text" placeholder="Username" name="username"><br/><br/>
+  <h6>Password:</h6><br/>
+    <input type="password" placeholder="Password" name="password"><br/><br/>
+  <input type="submit" value="Log In" class="btn btn-primary">
+</form>
+<br/><br/><br/>
+<h5 style="margin-left: 20px">Don't have an account? Sign up here!</h5>
+<div style="background-color:#000000; height:4px; width:50%;"> </div>
+<br>
+<form action="/sign_up" METHOD="POST" autocomplete="off">
+  <nobr><h6>First Name<h6 id="ast" style="color: #ff251e">*</h6>:</h6></nobr><br/>
+  <input type="text" placeholder="First Name" name="fname"><br/><br/>
+<h6>Last Name<h6 id="ast1" style="color: #ff251e">*</h6>:</h6><br/>
+  <input type="text" placeholder="Last Name" name="lname"><br/><br/>
+<h6>Username<h6 id="ast2" style="color: #ff251e">*</h6>:</h6><br/>
+  <input type="text" placeholder="Username" name="username_su"><br/><br/>
+<h6>Password<h6 id="ast3" style="color: #ff251e">*</h6>:</h6><br/>
+  <input type="password" placeholder="Password" name="password_su"><br/><br/>
+  <h6>Password Confirmation<h6 id="ast4" style="color: #ff251e">*</h6>:</h6><br/>
+  <input type="password" placeholder="Password" name="password_su_conf"><br/><br/>
+<h6>Email:</h6><br/>
+  <input type="text" placeholder="Email(optional)" name="email"><br/><br/>
+<input type="submit" value="Create Account" class="btn btn-primary">
+</form>
+<br>
+</div>
+</div>
+<br>
+<br>
+<br>
+</center>
+</div>
+</center>
+{% endblock %}

@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+  <div>
+    <br>
+    <h4 class="text-center">Search Results:</h4>
+
+    <br>
+  </div>
+<ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Basic Info</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Vendors Flagged</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Detailed Info</button>
+  </li>
+</ul>
+
+<!-- Basic Info Tag -->
+<!-- COLOR TAGS: SAFE = #2b8f22 SUSPICIOUS = #c1bb49 MALICIOUS = #b70d29 -->
+<!-- COLOR TAGS: BACKGROUND GREY = #dedee3 BACKGROUND RED = #f6d8dd BACKGROUND GREEN = #dcf2db -->
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <br>
+  <br>
+  <center>
+    <div style = "font-size:32px" >
+      This file is 
+      <font color = {{ color }}>{{ mal }}.</font>
+    </div>
+    <br>
+    <div style="background-color:#000000; height:12px; width:60%;"> 
+      <br><br>
+      <center>
+    <form action="/download/{{ hash[0] }}" MEETHOD="POST">
+        <input type="submit" value="Download Results" class="btn btn-outline-primary"><br/><br/>
+      </form>
+    </center>
+      {{ hash[7] }} out of {{ hash[6] }} security vendors flagged this file to be malicious. <br/>
+      <br>
+      <br>
+      <div style="background-color:#dedee3; width:90%; padding: 20px; font-size:20px" >
+        {{ sentence }}
+      </div>
+      <br>
+    </div>
+  </center>
+  
+  
+  
+</div>
+
+<!-- Vendors Flagged Tag -->
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <center>
+    <div style = "font-size:32px" >
+      {{ hash[7] }} out of {{ hash[6] }} flagged <br/>
+    </div>
+    <br>
+    <div style="background-color:#000000; height:12px; width:60%;"> 
+      <br>
+      <br>
+      <center>
+    <form action="/download/{{ hash[0] }}" MEETHOD="POST">
+        <input type="submit" value="Download Results" class="btn btn-outline-primary"><br/><br/>
+      </form>
+    </center>
+      <div style="background-color:#f6d8dd; width:90%; padding: 20px; font-size:20px" >
+          <div style = "font-size:32px" >
+            Suspicious or Malicious
+          </div>
+          <br>
+        {% for index in range(0,hash[7],3) %}
+            <div style = "float:left; width:33.33%;padding:10x;">
+              {{ who[index] }} <br>
+            </div>
+            <div style = "float:left; width:33.33%;padding:10x;">
+              {{ who[index+1] }} <br>
+            </div>
+            <div style = "float:left; width:33.33%;padding:10x;">
+              {{ who[index+2] }}<br>
+            </div>
+        {% endfor %}
+          <div style = "clear:both;display:table"></div>
+      </div>
+      <br>
+      <div style="background-color:#dcf2db; width:90%; padding: 20px; font-size:20px" >
+          <div style = "font-size:32px" >
+            Not Suspicious or Malicious
+          </div>
+          <br>
+        {% for index in range(0,not_flagged,3) %}
+            <div style = "float:left; width:33.33%;padding:10x;">
+              {{ vend[index] }} <br>
+            </div>
+
+            <div style = "float:left; width:33.33%;padding:10x;">
+              {{ vend[index+1] }} <br>
+            </div>
+
+            <div style = "float:left; width:33.33%;padding:10x;">
+              {{ vend[index+2] }} <br>
+            </div>
+
+        {% endfor %}
+          <div style = "clear:both;display:table"></div>
+      </div>
+      <br>
+    </div>  
+    
+  </center>
+<br></div>
+
+
+<!-- Detailed Info Tag -->
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br/>
+  <center>
+    <div style = "font-size:32px" >
+      MD5 Hash: {{hash[0]}} <br/>
+    </div>
+    <br>
+    <div style="background-color:#000000; height:12px; width:60%;"> 
+      <br>
+      <br>
+      <center>
+    <form action="/download/{{ hash[0] }}" MEETHOD="POST">
+        <input type="submit" value="Download Results" class="btn btn-outline-primary"><br/><br/>
+      </form>
+    </center>
+      <div style="background-color:#dedee3; width:90%; padding: 18px; font-size:20px" >
+        <div style = "text-align:left">
+          <div style = "font-size:32px" >
+            Properties
+          </div>
+          <br>
+          <span>
+            <ul style="list-style-type: none; display: inline-block; zoom:1; *display: inline; _height: 10px; font-size:20px;">
+              <li>MD5: {{hash[0]}} </li>
+              <li>SHA256: {{hash[1]}}</li>
+              <li>Size (Bytes): {{hash[3]}}</li>
+              <li>File Type: {{hash[2]}}</li>
+            </ul>
+
+          </span>
+        </div>
+      </div>
+      <br>
+      <div style="background-color:#dedee3; width:90%; padding: 20px; font-size:20px" >
+        <div style = "text-align:left">
+          <div style = "font-size:32px" >
+            Common File Names
+          </div>
+          <br>
+          <span>
+            <ul style="list-style-type: none; display: inline-block; zoom:1; *display: inline; _height: 10px;">
+              {% for name in names %}
+              <li>{{ name }}</li>
+              {% endfor %}
+            </ul>
+          </span>
+        </div>
+      </div>
+      <br>
+    </div>  
+    
+  </center>
+</div>
+
+</div>
+{% endblock %}
